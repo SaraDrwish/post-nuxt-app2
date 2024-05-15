@@ -20,6 +20,10 @@
           {
             title: "Home",
             to:"/",
+          },
+           {
+            title: "Admin",
+            to:"/admin",
           }
         ]
         }
