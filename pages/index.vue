@@ -1,5 +1,5 @@
 <template>
-  <div class="yellow pa-4">
+  <div class="yellow lighten-3 pa-8">
     <v-row  >
       <v-col xs12 sm8 md6 v-for="post in $store.state.posts" :key="post.id" >
         <post-card :post="post"></post-card>
