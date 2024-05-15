@@ -1,18 +1,14 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="green lighten-2 pa-2 ma-2" >
-        <v-card-title class="green lighten-4 pa-2">
-            Admin
-        </v-card-title>
-      </v-card>
-
-      <v-card class="blue lighten-2 pa-2 ma-2" v-for="post in $store.state.posts" :key="post.id">
-         <post-card :post="post" :is-admin="true"></post-card>
-      </v-card>
-
-    </v-col>
-  </v-row>
+  <div class="red lighten-4 pa-8 ma-2" >
+    <h2 class="my-4">Admin</h2>
+    <v-row>
+      <v-col xs12 sm8 md6 class="blue lighten-2 pa-2 ma-2" v-for="post in $store.state.posts" :key="post.id" >
+        <v-card >
+          <post-card :post="post" :is-admin="true"></post-card>
+        </v-card>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
