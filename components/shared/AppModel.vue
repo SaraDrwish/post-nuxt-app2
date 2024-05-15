@@ -12,14 +12,14 @@
           </v-btn>
           <slot name="modelButton" :on="on" v-else></slot>
         </template>
-        <slot ></slot>
+        <slot></slot>
     </v-dialog>
   </div>
 </template>
 
 <script>
 export default {
-  name:"app-model",
+  name:"AppModel",
   props: {
     modalVisibilty: {
       type: Boolean,

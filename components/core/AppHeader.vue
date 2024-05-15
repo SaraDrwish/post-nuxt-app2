@@ -16,6 +16,7 @@
   export default {
     data() {
       return {
+        name:"AppHeader",
         items: [
           {
             title: "Home",

@@ -2,10 +2,10 @@
     <div class="post-card" >
       <v-card class="cardBox mx-auto  pa-1 my-2"  >
         <v-card-text class="pa-2"  >
-            <h3 class="pa-2 mb-4 orange--text">
-              {{ post.title }}
-            </h3>
-            <p>{{ post.body }}</p>
+          <h3 class="pa-2 mb-4 orange--text">
+            {{ post.title }}
+          </h3>
+          <p>{{ post.body }}</p>
         </v-card-text>
         <v-card-actions class="cardActio">
           <template v-if="isAdmin">
@@ -19,26 +19,22 @@
                 Delete
               </span>
             </v-btn> -->
-            <appModel button-text="delete">
-                <v-card>
+            <AppModel button-text="delete">
+              <v-card>
                 <v-card-title class="text-h5">
-                  Use Google's location service?
+                  model title
                 </v-card-title>
-
                 <v-card-text>
-                  Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+                  nymous location data to Google, even when no apps are running.
                 </v-card-text>
-
                 <v-card-actions>
                   <v-spacer></v-spacer>
-
                   <v-btn
                     color="green darken-1"
                     text
                   >
                     Cancel
                   </v-btn>
-
                   <v-btn
                     color="green darken-1"
                     text
@@ -47,8 +43,7 @@
                   </v-btn>
                 </v-card-actions>
               </v-card>
-
-            </appModel>
+            </AppModel>
           </template>
           <template v-else>
             <v-btn color="indigo white--text" :to="`/post/${post.id}`" >
@@ -63,9 +58,9 @@
 </template>
 
 <script>
-import appModel from './shared/app-model.vue'
+import AppModel from './shared/AppModel.vue'
   export default {
-  components: { appModel },
+  components: { AppModel },
   props: {
       post: {
         type: Object,

@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <app-header></app-header>
+    <!-- <app-header></app-header> -->
+    <AppHeader></AppHeader>
      <v-main>
       <v-container>
         <Nuxt/>
@@ -16,7 +17,9 @@
 </template>
 
 <script>
+import AppHeader from '~/components/core/AppHeader.vue';
 export default {
+  components:{AppHeader},
   name: 'DefaultLayout',
   data () {
     return {
