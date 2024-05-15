@@ -1,39 +1,40 @@
 <template>
-  <div>
-
-    <v-dialog max-width="500">
-      <template v-slot:activator="{ props: activatorProps }">
+  <div >
+    <v-dialog max-width="500" v-model="dialog">
+      <template v-slot:activator="{on,attrs }">
         <v-btn
-          v-bind="activatorProps"
-          color="surface-variant"
-          text="Open Dialog"
-          variant="flat"
-        ></v-btn>
-      </template>
-
-      <template v-slot:default="{ isActive }">
-        <v-card title="Dialog">
-          <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-
-            <v-btn
-              text="Close Dialog"
-              @click="isActive.value = false"
-            ></v-btn>
-          </v-card-actions>
-        </v-card>
-      </template>
+          v-if="buttonText"
+          color="primary"
+          v-bind="attrs"
+          v-on="on"
+          >
+          {{buttonText}}
+          </v-btn>
+          <slot name="modelButton" :on="on" v-else></slot>
+        </template>
+        <slot ></slot>
     </v-dialog>
-
   </div>
 </template>
 
 <script>
-  export default {
-
+export default {
+  name:"app-model",
+  props: {
+    modalVisibilty: {
+      type: Boolean,
+      required:false,
+    },
+    buttonText: {
+      type: String,
+      default:false
+    }
+  }
+  ,
+  data() {
+    return {
+      dialog:false,
+  }
+}
   }
 </script>
