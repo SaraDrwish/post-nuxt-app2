@@ -3,12 +3,11 @@
     <v-dialog max-width="500" v-model="dialog">
       <template v-slot:activator="{on,attrs }">
         <v-btn
+          v-bind="{...computedProps , ...attrs}"
           v-if="buttonText"
-          color="primary"
-          v-bind="attrs"
           v-on="on"
           >
-          {{buttonText}}
+            {{buttonText}}
           </v-btn>
           <slot name="modelButton" :on="on" v-else></slot>
         </template>
@@ -27,14 +26,32 @@ export default {
     },
     buttonText: {
       type: String,
-      default:false
-    }
+      required:false
+    },
+     buttonColor: {
+      type: String,
+      default:'primary',
+    },
+    buttonStyle: {
+      type: Boolean,
+      required:false
+    },
   }
   ,
   data() {
     return {
       dialog:false,
-  }
+    }
+  },
+  computed: {
+    computedProps() {
+      let returnValue = {
+        text: this.buttonStyle,
+        color: this.buttonColor,
+      };
+      // if (this.buttonColor) returnValue.color = this.buttonColor
+      return returnValue
+    }
 }
   }
 </script>

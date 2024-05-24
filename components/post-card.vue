@@ -19,31 +19,33 @@
                 Delete
               </span>
             </v-btn> -->
-            <AppModel button-text="delete">
+            <!-- //////////////////////////// -->
+            <AppModel button-text="delete" :button-style="true" button-color="error">
               <v-card>
                 <v-card-title class="text-h5">
-                  model title
+                 are you sure that you want to delete this item ???
                 </v-card-title>
-                <v-card-text>
-                  nymous location data to Google, even when no apps are running.
-                </v-card-text>
+                <!-- <v-card-text>
+                  confirm delete item ???
+                </v-card-text> -->
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn
                     color="green darken-1"
                     text
                   >
-                    Cancel
+                    Delete
                   </v-btn>
                   <v-btn
                     color="green darken-1"
                     text
                   >
-                    Agree
+                    Close
                   </v-btn>
                 </v-card-actions>
               </v-card>
             </AppModel>
+            <!-- //////////////////////////// -->
           </template>
           <template v-else>
             <v-btn color="indigo white--text" :to="`/post/${post.id}`" >
@@ -64,12 +66,13 @@ import AppModel from './shared/AppModel.vue'
   props: {
       post: {
         type: Object,
-        require:true,
+        required:true,
       },
       isAdmin: {
         type: Boolean,
-        require:false,
-      }
+        required:false,
+    },
+
   },
   methods: {
     updateSelectedPost(post) {
