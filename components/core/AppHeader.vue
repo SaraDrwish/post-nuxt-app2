@@ -32,15 +32,12 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
 .v-sheet.v-list:not(.v-sheet--outlined),
 .v-toolbar__content, .v-toolbar__extension{
-     background: #F5F5F5;
-   }
-
+    background: #F5F5F5;
+}
 .v-btn__content {
   color: aliceblue !important;
 }
-
 </style>

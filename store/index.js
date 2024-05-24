@@ -20,5 +20,11 @@ export default {
         );
       });
     },
+    addPost({ state, commit }, payload) {
+      // const post = { ...payload, id:state.posts.length + 1 };
+      return this.$axios.$post(`/posts/`, payload).then((res) => {
+        commit("updatePosts", [...state.posts, res]);
+      });
+    },
   },
 };

@@ -7,6 +7,7 @@
           <v-text-field
             v-model="form.title"
             :counter="10"
+            label="post title"
             :rules="rules.title"
             hide-details
             required
@@ -16,6 +17,7 @@
       <v-row >
         <v-col >
           <v-textarea
+          label="post body"
             v-model="form.body"
             :rules="rules.body"
             name="input-7-1"
@@ -24,7 +26,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-btn type="submit" class="pa-1 ma-2 orange grey--text w-50" >Add</v-btn>
+<v-btn type="submit" :loading="addPstLoading" class="pa-1 ma-2 orange grey--text w-50"  :disabled="!valid">Add</v-btn>
   </v-form>
 </template>
 <script>
@@ -32,6 +34,7 @@ export default {
   name:"post-form",
   data() {
     return {
+      addPstLoading:false,
       form: {
          title:'',
         body:'',
@@ -53,7 +56,13 @@ export default {
   },
   methods: {
     submit() {
-      console.log("form submited ...")
+      this.addPstLoading = true;
+      console.log("form submited ...");
+      this.$store.dispatch('addPost', this.form).then(() => {
+        this.$router.push(`/admin`)
+      }).finally(() => {
+        this.addPstLoading = false
+      })
    }
   },
 
