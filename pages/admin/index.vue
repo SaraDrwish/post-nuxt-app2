@@ -1,6 +1,9 @@
 <template>
   <div class="red lighten-4 pa-8 ma-2" >
     <h2 class="my-4">Admin</h2>
+    <div class="mb-8">
+      <v-btn to="/admin/post/add" color="primary">Add Post</v-btn>
+    </div>
     <v-row>
       <v-col xs12 sm8 md6 class="blue lighten-2 pa-2 ma-2" v-for="post in $store.state.posts" :key="post.id" >
         <v-card >
