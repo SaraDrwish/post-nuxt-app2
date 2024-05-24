@@ -1,7 +1,7 @@
 <template>
-    <div class="post-card" >
-      <v-card class="cardBox mx-auto  pa-1 my-2"  >
-        <v-card-text class="pa-2"  >
+    <div class="post-card " >
+      <v-card class="cardBox mx-auto pa-1 my-2" >
+        <v-card-text class="pa-2">
           <h3 class="pa-2 mb-4 orange--text">
             {{ post.title }}
           </h3>
@@ -9,26 +9,17 @@
         </v-card-text>
         <v-card-actions class="cardActio">
           <template v-if="isAdmin">
-            <v-btn :to="`admin/post/${post.id}/edit`"  color="success">
+            <v-btn :to="`admin/post/${post.id}/edit`" color="success">
               <span  >
                 Edit
               </span>
             </v-btn>
-            <!-- <v-btn color="error" >
-              <span  >
-                Delete
-              </span>
-            </v-btn> -->
-            <!-- //////////////////////////// -->
             <AppModel button-text="delete" :button-style="true" button-color="error">
               <template slot-scope="{close}">
                 <v-card>
                   <v-card-title class="text-h5">
                     you sure that you want to delete the item???
                   </v-card-title>
-                  <!-- <v-card-text>
-                    confirm delete item ???
-                  </v-card-text> -->
                   <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn
@@ -47,7 +38,6 @@
                 </v-card>
               </template>
             </AppModel>
-            <!-- //////////////////////////// -->
           </template>
           <template v-else>
             <v-btn color="indigo white--text" :to="`/post/${post.id}`" >
