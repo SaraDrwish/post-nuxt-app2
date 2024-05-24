@@ -1,25 +1,27 @@
 <template>
-
-  <v-form v-model="valid">
+  <v-form v-model="valid" @submit.prevent="submit" class="pink lighten-2 pa-1 mx-auto">
     <h2>post-form-component</h2>
-    <v-container>
+    <v-container >
       <v-row>
         <v-col
+        class="red  lighten-2 pa-2"
           cols="12"
-          md="4"
+          md="6"
         >
           <v-text-field
-            v-model="firstname"
+            v-model="form.title"
             :counter="10"
             :rules="rules.title"
-            label="First name"
             hide-details
             required
           ></v-text-field>
         </v-col>
-        <v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12"
+          md="6" class="blue  lighten-2 pa-2" >
           <v-textarea
-            label="Label"
+            v-model="form.body"
             :rules="rules.body"
             name="input-7-1"
             auto-grow
@@ -27,18 +29,19 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-btn type="submit">add</v-btn>
   </v-form>
 </template>
 <script>
 export default {
+  name:"post-form",
   data() {
     return {
       form: {
-        title: null,
-        body:null,
+         title:'',
+        body:'',
       },
-      // firstname: '',
-
+      valid:false,
       rules: {
         title: [
           v=>!!v||"title is requeired",
@@ -52,6 +55,11 @@ export default {
       },
 
     }
+  },
+  methods: {
+    submit() {
+      console.log("form submited ...")
+   }
   },
 
 }
