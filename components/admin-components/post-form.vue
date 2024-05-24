@@ -11,43 +11,17 @@
           <v-text-field
             v-model="firstname"
             :counter="10"
-            :rules="nameRules"
+            :rules="rules.title"
             label="First name"
             hide-details
             required
           ></v-text-field>
         </v-col>
-
-        <v-col
-          cols="12"
-          md="4"
-        >
-          <v-text-field
-            v-model="lastname"
-            :counter="10"
-            :rules="nameRules"
-            label="Last name"
-            hide-details
-            required
-          ></v-text-field>
-        </v-col>
-
-        <v-col
-          cols="12"
-          md="4"
-        >
-          <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            hide-details
-            required
-          ></v-text-field>
+        <v-col>
           <v-textarea
             label="Label"
-            model-value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+            :rules="rules.body"
             name="input-7-1"
-            variant="filled"
             auto-grow
         ></v-textarea>
         </v-col>
@@ -56,36 +30,29 @@
   </v-form>
 </template>
 <script>
-  export default {
-    data: () => ({
-      valid: false,
-      firstname: '',
-      lastname: '',
-      nameRules: [
-        value => {
-          if (value) return true
+export default {
+  data() {
+    return {
+      form: {
+        title: null,
+        body:null,
+      },
+      // firstname: '',
 
-          return 'Name is required.'
-        },
-        value => {
-          if (value?.length <= 10) return true
+      rules: {
+        title: [
+          v=>!!v||"title is requeired",
+          v=>v.length <= 10 ||'title must be less than 10 characters.'
+        ],
+        body: [
+          v=>!!v||"body is requeired",
+          v=>v.length <= 10 ||'body must be less than 10 characters.'
+        ],
 
-          return 'Name must be less than 10 characters.'
-        },
-      ],
-      email: '',
-      emailRules: [
-        value => {
-          if (value) return true
+      },
 
-          return 'E-mail is requred.'
-        },
-        value => {
-          if (/.+@.+\..+/.test(value)) return true
+    }
+  },
 
-          return 'E-mail must be valid.'
-        },
-      ],
-    }),
-  }
+}
 </script>
