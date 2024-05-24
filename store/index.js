@@ -11,4 +11,14 @@ export default {
       state.selectedPost = posts;
     },
   },
+  actions: {
+    deletePost({ state, commit }, PostId) {
+      return this.$axios.$delete(`/posts/${PostId}`).then(() => {
+        commit(
+          "updatePosts",
+          state.posts.filter((post) => post.id != PostId)
+        );
+      });
+    },
+  },
 };

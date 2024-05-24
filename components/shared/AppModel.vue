@@ -11,7 +11,7 @@
           </v-btn>
           <slot name="modelButton" :on="on" v-else></slot>
         </template>
-        <slot></slot>
+        <slot :close="close"></slot>
     </v-dialog>
   </div>
 </template>
@@ -45,13 +45,18 @@ export default {
   },
   computed: {
     computedProps() {
-      let returnValue = {
-        text: this.buttonStyle,
-        color: this.buttonColor,
-      };
-      // if (this.buttonColor) returnValue.color = this.buttonColor
-      return returnValue
-    }
-}
+        let returnValue = {
+          text: this.buttonStyle,
+          color: this.buttonColor,
+        };
+        // if (this.buttonColor) returnValue.color = this.buttonColor
+        return returnValue
+      }
+  },
+  methods: {
+    close() {
+      thie.dialog = false
+   }
+    },
   }
 </script>
