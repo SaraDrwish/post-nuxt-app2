@@ -1,5 +1,5 @@
 <template>
-  <div class="yellow pa-1 mx-auto ">
+  <div class="yellow lighten-4 pa-1 mx-auto grey--text ">
     <h2>add post page</h2>
     <postForm></postForm>
   </div>

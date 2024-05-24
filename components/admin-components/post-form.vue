@@ -1,13 +1,9 @@
 <template>
-  <v-form v-model="valid" @submit.prevent="submit" class="pink lighten-2 pa-1 mx-auto">
+  <v-form v-model="valid" @submit.prevent="submit" class="pink lighten-5 pa-1 mx-auto text-center orange--text " >
     <h2>post-form-component</h2>
     <v-container >
-      <v-row>
-        <v-col
-        class="red  lighten-2 pa-2"
-          cols="12"
-          md="6"
-        >
+      <v-row >
+        <v-col  >
           <v-text-field
             v-model="form.title"
             :counter="10"
@@ -17,9 +13,8 @@
           ></v-text-field>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col cols="12"
-          md="6" class="blue  lighten-2 pa-2" >
+      <v-row >
+        <v-col >
           <v-textarea
             v-model="form.body"
             :rules="rules.body"
@@ -29,7 +24,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-btn type="submit">add</v-btn>
+    <v-btn type="submit" class="pa-1 ma-2 orange grey--text w-50" >Add</v-btn>
   </v-form>
 </template>
 <script>
