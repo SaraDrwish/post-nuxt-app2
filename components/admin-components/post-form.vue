@@ -63,7 +63,10 @@ export default {
       }).finally(() => {
         this.addPstLoading = false
       })
-   }
+    },
+    getPost() {
+      this.$axios.$get("/post"+this.postId)
+    },
   },
   computed: {
     postId() {
