@@ -47,7 +47,7 @@ export default {
         ],
         body: [
           v=>!!v||"body is requeired",
-          v=>v.length <= 100 ||'body must be less than 10 characters.'
+          v=>v.length <= 200 ||'body must be less than 10 characters.'
         ],
 
       },
@@ -63,7 +63,7 @@ export default {
         { name: 'addPost', payload: this.form  }
       console.log("form submited ...");
       this.$store.dispatch(action.name , action.payload).then(() => {
-        this.$router.push(`/admin`)
+        this.$router.push('/admin')
       }).finally(() => {
         this.addPstLoading = false
       })
