@@ -65,7 +65,11 @@ export default {
       })
     },
     getPost() {
-      this.$axios.$get("/post"+this.postId)
+      // this.$axios.$get("/post"+this.postId)
+      this.$store.dispatch('getPost', this.postId).then(post => {
+        this.form.title = post.title,
+        this.form.body = post.body,
+      })
     },
   },
   computed: {
@@ -77,6 +81,10 @@ export default {
       return this.postId ? "save": "submit";
     },
   },
+  //this is a lifesycle hook , بتكول كل م الكومبوننت يترندر
+  mounted() {
+    this.postId &&  this.getPost()
+  }
 
 }
 </script>
