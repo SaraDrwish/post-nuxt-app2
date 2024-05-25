@@ -57,8 +57,13 @@ export default {
   methods: {
     submit() {
       this.addPstLoading = true;
+      const action = this.postId
+        ?
+        { name: 'editPost', payload: { ...this.form, id: this.postId } }
+        :
+        { name: 'addPost', payload: this.form  }
       console.log("form submited ...");
-      this.$store.dispatch('addPost', this.form).then(() => {
+      this.$store.dispatch(action.name , action.payload).then(() => {
         this.$router.push(`/admin`)
       }).finally(() => {
         this.addPstLoading = false
@@ -66,11 +71,12 @@ export default {
     },
     getPost() {
       // this.$axios.$get("/post"+this.postId)
-      this.$store.dispatch('getPost', this.postId).then(post => {
-        this.form.title = post.title,
-        this.form.body = post.body,
+      this.$store.dispatch('getPost', this.postId)
+        .then(post => {
+        this.form.title = post.title
+        this.form.body = post.body
       })
-    },
+    }
   },
   computed: {
     postId() {
@@ -83,8 +89,8 @@ export default {
   },
   //this is a lifesycle hook , بتكول كل م الكومبوننت يترندر
   mounted() {
-    this.postId &&  this.getPost()
-  }
+    this.postId && this.getPost()
+  },
 
 }
 </script>
