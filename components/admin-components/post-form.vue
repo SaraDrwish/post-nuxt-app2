@@ -26,7 +26,7 @@
         </v-col>
       </v-row>
     </v-container>
-<v-btn type="submit" :loading="addPstLoading" class="pa-1 ma-2 orange grey--text w-50"  :disabled="!valid">Add</v-btn>
+<v-btn type="submit" :loading="addPstLoading" class="pa-1 ma-2 orange grey--text w-50"  :disabled="!valid">{{submitBtnText}}</v-btn>
   </v-form>
 </template>
 <script>
@@ -36,7 +36,7 @@ export default {
     return {
       addPstLoading:false,
       form: {
-         title:'',
+        title:'',
         body:'',
       },
       valid:false,
@@ -64,6 +64,15 @@ export default {
         this.addPstLoading = false
       })
    }
+  },
+  computed: {
+    postId() {
+      //to convert the string into number: +xxx
+      return +this.$route.params.id
+    },
+    submitBtnText() {
+      return this.postId ? "save": "submit";
+    },
   },
 
 }

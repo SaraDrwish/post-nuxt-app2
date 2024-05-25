@@ -7,7 +7,7 @@
     <v-row dense >
       <v-col cols="12" md="4"
           class="blue lighten-2 pa-2 my-2 mx-auto" v-for="post in $store.state.posts" :key="post.id" >
-        <v-card max-width="350" class="mx-auto ">
+        <v-card   class="mx-auto ">
           <post-card :post="post" :is-admin="true"></post-card>
         </v-card>
       </v-col>
