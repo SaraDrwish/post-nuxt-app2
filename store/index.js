@@ -28,9 +28,9 @@ export default {
     },
     getPost({state},PostId) {
       const post = state.posts.find(item => item.id == PostId);
-      return post ؟ Promise.resolve(post): this.$axios.get(`/posts/`${PostId})
+      return post ? Promise.resolve(post) : this.$axios.$get(`/posts/${PostId}`)
     },
-     editPost({ state, commit }, payload) {
+    editPost({ state, commit }, payload) {
       return this.$axios.$put(`/posts/${payload.id}`, payload).then((res) => {
         commit("updatePosts", state.posts.map(post=>post.id==payload.id ? payload: post));
       });

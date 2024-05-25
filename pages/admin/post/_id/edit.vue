@@ -10,8 +10,5 @@ import postForm from '@/components/admin-components/post-form.vue'
   export default {
   components: { postForm },
   name: "edit",
-  data() {
-
-    },
   }
 </script>

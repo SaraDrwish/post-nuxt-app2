@@ -43,11 +43,11 @@ export default {
       rules: {
         title: [
           v=>!!v||"title is requeired",
-          v=>v.length <= 10 ||'title must be less than 10 characters.'
+          v=>v.length <= 30||'title must be less than 10 characters.'
         ],
         body: [
           v=>!!v||"body is requeired",
-          v=>v.length <= 10 ||'body must be less than 10 characters.'
+          v=>v.length <= 100 ||'body must be less than 10 characters.'
         ],
 
       },
@@ -59,8 +59,7 @@ export default {
       this.addPstLoading = true;
       const action = this.postId
         ?
-        { name: 'editPost', payload: { ...this.form, id: this.postId } }
-        :
+        { name: 'editPost', payload: { ...this.form, id: this.postId } }:
         { name: 'addPost', payload: this.form  }
       console.log("form submited ...");
       this.$store.dispatch(action.name , action.payload).then(() => {
