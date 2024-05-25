@@ -26,5 +26,9 @@ export default {
         commit("updatePosts", [...state.posts, res]);
       });
     },
+    getPost({state},PostId) {
+      const post = state.posts.find(item => item.id == PostId);
+      return post ؟ Promise.resolve(post): this.$axios.get(`/posts/`${PostId})
+    }
   },
 };
